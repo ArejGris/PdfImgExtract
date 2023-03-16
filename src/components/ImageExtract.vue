@@ -112,7 +112,7 @@ import axios from 'axios'
 
 
 
-    show.value=!show.value;
+    show.value=true;
         }
       function  addclass(){
             document.querySelector('#form').classList.remove('form');
@@ -139,8 +139,8 @@ import axios from 'axios'
 
         }
         function uploadFile(){
-            myfile.value=file.value.value.file.files[0];
-            console.log(myfile)
+            myfile.value=file.value.files[0];
+            console.log(myfile.value)
         }
     
     
