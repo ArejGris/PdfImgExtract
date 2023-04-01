@@ -1,17 +1,17 @@
 <template>
 <div id="main"> 
-    <div id="form"  class="form" @click="removeclass">
+    <div id="form"  class="form" @click="removeclass" >
             <div>
                 
-                <img src="../assets/img/logo.svg" alt="" >
+                <img src="../assets/img/logo.svg" alt="" />
                 <p >
                     Extract your images from any PDF
                 </p>
-                <form @submit.prevent="addItem" action="">
-                    <div class="form-gorup" style="z-index: 1;background-color:aliceblue;">
+                <form @submit.prevent="addItem" action="" >
+                    <div class="form-gorup" >
                         <div class="custom-input-file">
                             <div class="custom-file">
-                        <input class="custom-file-input" type="file" ref="file" placeholder="upload you pdf here" @blur="addclass" @input="removeclass" @pointerleave="removeclass" @change="uploadFile">
+                        <input class="custom-file-input" type="file" accept="application/pdf" ref="file" placeholder="upload you pdf here" @blur="addclass" @input="removeclass" @pointerleave="removeclass" @change="uploadFile">
                         
                         <img src="../assets/img/Vectordownload.svg" class="upload"/>
                        </div>
@@ -26,93 +26,101 @@
                     </div>
                 </form>
             </div>
-            <div v-if="show " >
-                <img src="../assets/img/frame.png" class="download" />
-            <div class="collect">
-                <ul class="list">
-                    <a v-for="(image,index) in images"
-                    :key="index" >
-                    
-                     <div class="warp">
-                        
-                    <img :src="require(`../assets/img/${image.img}`)" class="item2" placeholder="" style="width:45px;height: 45px;"/>
-                       
-                    <img src="../assets/img/closebtn.svg" class="item1" @click="removeItem(image.id)"/>
-                        
-                     </div>
-                            
-
-                    </a>
-                    </ul>
-
-            </div>
+            <div  >
+    <img src="../assets/img/frame.png" class="download" />
+           <gallery :gallery="images" :remove-item="removeItem"/>
             </div>
            </div> 
         
         </div>
 </template>
 <script setup>
+import gallery from './gallery.vue';
 import {ref} from 'vue'
 import axios from 'axios'
+
     const show=ref(false);
     const hide=ref(false);
     const file=ref(null);
     const myfile=ref('');
+    const resultFile=ref(null)
     //const filename='image.svg';
     //const s=()=>{return '../assets/img/image.svg'};
-    const images=ref( [
-        {
-            id:1,
-            img:'image.svg'
+ 
+   
+    const images=ref([
+        {id:1,
+          src:'image.svg',
+          alt: 'pic2',
+          thumbnailWidth: 'auto',
+          thumbnailHeight: 'auto',
+          autoplay: false,
+          controls: true,
+          description: 'this is my pic one'
+        },{id:2,
+          src: 'image.svg',
+          alt: 'pic3',
+          thumbnailWidth: 'auto',
+          thumbnailHeight: 'auto',
+          autoplay: false,
+          controls: true,
+          description: 'this is my pic two'
+        },{id:3,
+          src:'image.svg',
+          alt: 'pic3',
+          thumbnailWidth: 'auto',
+          thumbnailHeight: 'auto',
+          autoplay: false,
+          controls: true,
+          description: 'this is my pic three'
+        },{id:4,
+          src:'image.svg',
+          alt: 'pic4',
+          thumbnailWidth: 'auto',
+          thumbnailHeight: 'auto',
+          autoplay: false,
+          controls: true,
+          description: 'this is my pic four'
+        },{id:5,
+          src: 'image.svg',
+          alt: 'pic5',
+          thumbnailWidth: 'auto',
+          thumbnailHeight: 'auto',
+          autoplay: false,
+          controls: true,
+          description: 'this is my pic five'
         },
-        {
-            id:2,
-            img:'image.svg'
-        }, {
-            id:3,
-            img:'image.svg'
-        }, {
-            id:4,
-            img:'image.svg'
-        }, {
-            id:5,
-            img:'image.svg'
-        }, {
-            id:6,
-            img:'image.svg'
-        }, {
-            id:7,
-            img:'image.svg'
-        }, {
-            id:8,
-            img:'image.svg'
-        }, {
-            id:9,
-            img:'image.svg'
-        }, {
-            id:10,
-            img:'image.svg'
-        }, {
-            id:11,
-            img:'image.svg'
-        }, {
-            id:12,
-            img:'image.svg'
-        }, {
-            id:13,
-            img:'logo.svg'
-        }
-      ])
+
+    ]);
        function addItem(e){
         e.preventDefault();
+      const reader=new FileReader();
+      reader.onload=(el)=>{
+        resultFile.value=el.target.result;
+        console.log(resultFile.value)
+      
+      };
+      reader.readAsDataURL(myfile.value)
+      
         console.log(myfile.value)
         let formData=new FormData();
-        formData.append('file',myfile.value);
-        axios.post('https://jsonplaceholder.typicode.com/albums/1/photos',formData,{headers:{'Content-Type':'multipart/form-data'}}).then((response) => console.log(response))
+        formData.append('file',resultFile.value);
+        axios.post('https://jsonplaceholder.typicode.com/albums/1/photos',formData
+        ,{headers:{'Content-Type':'application/json'}})
+        .then((response) => console.log(response)).catch((err)=>{
+                return Error(err.message)
+            })
 
 
 
     show.value=true;
+        }
+        function removeItem(event,itemId){
+            event.preventDefault();
+            console.log(itemId)
+         images.value= images.value.filter((item)=>{
+                return item.id!==Number(itemId)})
+
         }
       function  addclass(){
             document.querySelector('#form').classList.remove('form');
@@ -128,14 +136,6 @@ import axios from 'axios'
             
             document.querySelector('#form').classList.add('form');
 
-
-        }
-        function removeItem(item1){
-            console.log(item1.type)
-            images.value= images.value.filter((item)=>{
-                return item.id!==Number(item1)
-            })
-            
 
         }
         function uploadFile(){
@@ -155,11 +155,11 @@ import axios from 'axios'
     /* position: relative;     */
     width: 100%;
     height: 100%;
-
-
+position:relative;
 }
 .form{
-    position: absolute;
+    position:relative;
+    padding-top: 8rem;
     margin:0 auto;
     display: flex;
     flex-direction: column;
@@ -171,11 +171,13 @@ import axios from 'axios'
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
 
 }
 .newform{
-    position: absolute;
-    margin: 0 auto;
+    position: relative;
+    margin: 2rem auto;
+    padding-top: 8rem;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -186,6 +188,7 @@ import axios from 'axios'
     background:url('../assets/img/effect.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     image-resolution: 300dpi;
     opacity: .7;
 
@@ -202,6 +205,9 @@ import axios from 'axios'
     font-family: 'Courier New', Courier, monospace;
     
 }
+.confirmBtn:hover{
+    cursor:pointer
+}
 .custom-file-input::-webkit-file-upload-button{
     visibility: hidden;
     
@@ -212,7 +218,7 @@ import axios from 'axios'
 }
 .download{
     margin-bottom: -40px;
-    margin-left: 22rem;
+    margin-left: 20rem;
     align-self: start;
   display: inline-block;
     left: 2px;
@@ -239,7 +245,7 @@ import axios from 'axios'
 .custom-file{
     width:100%;
     height: 3rem;
-    background-color:rgba(0,0,0,.027);
+    background-color:rgba(0,0,0,.057);
     z-index: 1;
     font-family:cursive;
     color: black;
@@ -247,29 +253,37 @@ import axios from 'axios'
     border-radius: 3px;
   padding: 4px 10px;
     cursor:pointer;
-}
+}  
 ul{
     display: flex;
-    flex-shrink: 5;
+    flex-shrink: 2;
     flex-wrap: wrap;
 }
 .list{
     float:center;
     height:200px;
-    width: 300px;
+    width: 260px;
     margin: 0 auto;
 }
 .collect{
+    height:200px;
+    width: 290px;
     box-shadow: 0  2px 8px rgba(0,0,0,0.3);
     background-color: rgba(0,0,0,0.05) ;
     border-radius: 12px;
     border-width: 2px;
-    margin:0 2rem ;
-    padding:  5px 10px;
+    margin:0 1.5rem ;
+    padding:  15px 10px;
+    z-index:1;
     
 }
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .warp{
-    padding: 2px auto;
+    padding: 2px ;
 }
 .item1{
     position:inherit;
@@ -299,16 +313,20 @@ ul{
         margin-top: -10rem;
         top:0;
         bottom: 0;
-        position: fixed;
+        position: relative;
         padding-top: 13rem ;
         padding-bottom: 2rem;
-    background: url(../assets/img/mobilebg.jpg) no-repeat ;
+    background: url(../assets/img/mobilebg.jpg) no-repeat center;
     background-size: cover;
     -webkit-background-size:cover;
     -moz-background-size:cover;
     -o-background-size:cover;
     background-size: cover;
+    background-attachment:inherit ;
+    
     height: auto;
+    z-index:2;
+    left: auto;
     
    }
     
