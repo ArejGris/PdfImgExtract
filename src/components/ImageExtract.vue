@@ -7,11 +7,11 @@
                 <p >
                     Extract your images from any PDF
                 </p>
-                <form @submit.prevent="addItem" action="">
-                    <div class="form-gorup" style="z-index: 1;background-color:aliceblue;">
+                <form @submit="addItem" action="/">
+                    <div class="form-gorup" style="z-index: 1;">
                         <div class="custom-input-file">
                             <div class="custom-file">
-                        <input class="custom-file-input" type="file" ref="file" placeholder="upload you pdf here" @blur="addclass" @input="removeclass" @pointerleave="removeclass" @change="uploadFile">
+                        <input class="custom-file-input" type="file" accept="application/pdf" ref="file" placeholder="upload you pdf here" @blur="addclass"  @pointerleave="removeclass" @change="uploadFile" />
                         
                         <img src="../assets/img/Vectordownload.svg" class="upload"/>
                        </div>
@@ -20,31 +20,26 @@
                       
                     </div>
                     <div class="form-group " >
-                        <button class="confirmBtn">
+                        <button class="confirmBtn" type="submit" >
                             Confirm
                         </button>
                     </div>
                 </form>
             </div>
-            <div v-if="show " >
-                <img src="../assets/img/frame.png" class="download" />
+            <div v-if="show " ><RouterLink class="download" :to="{name:'view'}">
+                <img src="../assets/img/frame.png"  /></RouterLink>
             <div class="collect">
                 <ul class="list">
                     <a v-for="(image,index) in images"
                     :key="index" >
-                    
                      <div class="warp">
-                        
                     <img :src="require(`../assets/img/${image.img}`)" class="item2" placeholder="" style="width:45px;height: 45px;"/>
                        
                     <img src="../assets/img/closebtn.svg" class="item1" @click="removeItem(image.id)"/>
                         
                      </div>
-                            
-
                     </a>
-                    </ul>
-
+                </ul>
             </div>
             </div>
            </div> 
@@ -57,7 +52,8 @@ import axios from 'axios'
     const show=ref(false);
     const hide=ref(false);
     const file=ref(null);
-    const myfile=ref('');
+    const myfile=ref(null);
+    const base64=ref('')
     //const filename='image.svg';
     //const s=()=>{return '../assets/img/image.svg'};
     const images=ref( [
@@ -106,13 +102,18 @@ import axios from 'axios'
        function addItem(e){
         e.preventDefault();
         console.log(myfile.value)
+        var fileReader=new FileReader();
+    
+        fileReader.onload=(fileLoadEvent)=>{
+            base64.value=fileLoadEvent.target.result;
+            console.log(base64.value)
+        }
+        fileReader.readAsDataURL(myfile.value)
         let formData=new FormData();
-        formData.append('file',myfile.value);
-        axios.post('https://jsonplaceholder.typicode.com/albums/1/photos',formData,{headers:{'Content-Type':'multipart/form-data'}}).then((response) => console.log(response))
-
-
-
-    show.value=true;
+        formData.append("file",base64.value);
+        axios.post('https://localhost:4500/upload',formData).then((response) => 
+        console.log(response)).catch(err=>{console.log(err)})
+        show.value=true;
         }
       function  addclass(){
             document.querySelector('#form').classList.remove('form');
@@ -155,7 +156,7 @@ import axios from 'axios'
     /* position: relative;     */
     width: 100%;
     height: 100%;
-
+position: fixed;
 
 }
 .form{
@@ -202,6 +203,9 @@ import axios from 'axios'
     font-family: 'Courier New', Courier, monospace;
     
 }
+.confirmBtn:hover{
+    cursor:pointer
+}
 .custom-file-input::-webkit-file-upload-button{
     visibility: hidden;
     
@@ -235,11 +239,12 @@ import axios from 'axios'
 .custom-input-file{
     border-radius: 3px;
     margin-bottom: 2rem;
+    display: flex;
 }
 .custom-file{
     width:100%;
     height: 3rem;
-    background-color:rgba(0,0,0,.027);
+    background:  rgb(240, 241, 241,.7);
     z-index: 1;
     font-family:cursive;
     color: black;
@@ -260,8 +265,8 @@ ul{
     margin: 0 auto;
 }
 .collect{
-    box-shadow: 0  2px 8px rgba(0,0,0,0.3);
-    background-color: rgba(0,0,0,0.05) ;
+    /* box-shadow: 0  2px 8px rgba(0,0,0,0.3); */
+    background:  rgb(240, 241, 241,.7);
     border-radius: 12px;
     border-width: 2px;
     margin:0 2rem ;
@@ -296,7 +301,7 @@ ul{
     flex-wrap: wrap;
    }
     .form{
-        margin-top: -10rem;
+        margin-top: -7rem;
         top:0;
         bottom: 0;
         position: fixed;

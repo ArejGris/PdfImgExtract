@@ -1,14 +1,12 @@
 <template>
-  <ImageExtract/>
+ <router-view></router-view>
 </template>
 
 <script>
-import ImageExtract from './components/ImageExtract.vue';
 
 export default {
   name: 'App',
   components: {
-    ImageExtract
   },
   data(){
     return{
