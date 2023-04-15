@@ -6,16 +6,19 @@ import LogIn from './components/LogIn.vue'
 const router=createRouter({
 history:createWebHistory(),
 routes:[
-    {
-        path:'/',name:'home',component:ImageExtract
+{
+        path:'/',redirect:{name:'home'}
     },
     {
-        path:'/view-all',name:'view',component:ViewAll
+        path:'/pdfImgExtract/',name:'home',component:ImageExtract
     },
     {
-        path:'/view-img',name:'image',component:TheImg
+        path:'/PdfImgExtract/view-all',name:'view',component:ViewAll
     },
-    {path:'/login',name:'login',component:LogIn}
+    {
+        path:'/PdfImgExtract/view-img',name:'image',component:TheImg
+    },
+    {path:'/pdfImgExtract/login',name:'login',component:LogIn}
 ]
 })
 export default router
