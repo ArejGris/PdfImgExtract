@@ -25,11 +25,27 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Hubballi', cursive;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  width: 100%;
+  height: 100vh;
+  /* margin-top: 60px; */
+  background-image: url("./assets/img/background.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+@media screen and (max-width: 1024px ) {
+  #app{
+  background-image: url("./assets/img/mobilebgg.jpg");
+  background-attachment: fixed;
+  position: fixed;
+
+  }
 }
 </style>
