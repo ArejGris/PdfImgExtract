@@ -3,8 +3,8 @@
     <div id="form" class="form " >
       <!-- main card section -->
       <div class="card1" v-if="!hide">
-        <img src="../assets/img/logo.svg" alt="" />
-        <p>Extract Your Images From Any PDF</p>
+        <img style="margin-bottom:54px" src="../assets/img/logo.svg" alt="" />
+        <p >Extract Your Images From Any PDF</p>
         <form @submit.prevent="addItem" action="">
                 <div class="uploadFileBox" >
                    <div class="inputCard">
@@ -25,15 +25,14 @@
                           @abort="removeclass"
                                  />
                       </div>
-                      <div class="clear">
+                   </div>
+                    
+                 </div>
+                 <div class="clear" v-if="clear">
                         <p  ><img style="height:16px width:20px" src="../assets/img/clear.png" alt="">
                          Clear Selection</p>
                     
                       </div>
-
-                   </div>
-                    
-                 </div>
 
           <div class="form-group">
             <button class="confirmBtn">Confirm</button>
@@ -104,6 +103,7 @@ import { ref } from "vue";
 import axios from "axios";
 const show = ref(false);
 const hide = ref(false);
+const clear=ref(false);
 const file = ref(null);
 const myfile = ref("");
 //const filename='image.svg';
@@ -167,15 +167,17 @@ function addItem(e) {
   console.log(myfile.value);
   let formData = new FormData();
   formData.append("file", myfile.value);
+ 
   axios
     .post("https://jsonplaceholder.typicode.com/albums/1/photos", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     })
     .then((response) => console.log(response));
+    show.value = true;
 
-  show.value = !show.value;
 }
 function addclass() {
+  clear.value=true;
   document.querySelector("#main").classList.add("newMain");
   console.log(document.querySelector("#main").classList.contains("newMain"))
   hide.value=true
@@ -241,6 +243,7 @@ function uploadFile() {
     font-weight: 400;
     line-height: 21px;
     font-size: 22px;
+    margin: 0;
 }
 form{
   display: flex;
@@ -248,7 +251,7 @@ form{
   justify-content: center;
   text-align: center;
   -webkit-align-items:center;
-  margin:  0 auto;
+  margin:  30px 0 auto;
 }
 .confirmBtn {
   width: 261px;
@@ -257,7 +260,7 @@ form{
   color: #FFFFFF;
     border-radius: 5px;
   border-style: none;
-  margin-top: 10px;
+  margin: 40px 10px auto;
   font-family: "Hubballi";
   font-weight: 400;
   line-height: 21px;
@@ -274,13 +277,13 @@ form{
         width:auto;
         position: relative;
         vertical-align: middle;
-        margin: 50px auto;
+        margin: 30px auto;
       
       }
 .uploadFileBox{
     align-content: center;
     justify-content: space-between;
-    height: 85px;
+    height: 58px;
     padding: 10px auto;
     display: flex;
 }
@@ -453,7 +456,8 @@ margin-bottom:9px;
     color: red;
     display: flex;
     position: relative;
-    margin-top: 4rem;
+    margin-top:16px;
+    text-align:right;
   }
 }
 </style>
