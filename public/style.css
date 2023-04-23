@@ -1,6 +1,6 @@
 
   @import url('https://fonts.googleapis.com/css2?family=Hubballi&display=swap');
-
+@import 'bootstrap';
 html{
     margin:0;
     padding: 0;

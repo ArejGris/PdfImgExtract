@@ -9,6 +9,7 @@ export default {
   name: 'App',
   components: {
     ImageExtract
+    
   },
   data(){
     return{
@@ -42,7 +43,7 @@ export default {
 
 @media screen and (max-width: 1024px ) {
   #app{
-  background-image: url("./assets/img/mobilebgg.jpg");
+  background-image: url("./assets/img/mobilebg.svg");
   background-attachment: fixed;
   position: fixed;
 

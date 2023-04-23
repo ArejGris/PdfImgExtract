@@ -1,26 +1,23 @@
 <template>
-  <div id="main">
-    <div id="form" class="form" >
+  <div id="main" >
+    <div id="form" class="form " >
       <!-- main card section -->
       <div class="card1" v-if="!hide">
         <img src="../assets/img/logo.svg" alt="" />
         <p>Extract Your Images From Any PDF</p>
         <form @submit.prevent="addItem" action="">
-                <div class="uploadFileBox" 
-                  @click="addclass"
-                 >
+                <div class="uploadFileBox" >
                    <div class="inputCard">
-                       <div class="visible">
-                        <div class="inputText">
+                       <div class="visible"  >
+                        <div class="inputText" >
                           <span> Upload Your PDF here
                         </span>
                          <img src="../assets/img/Vectordownload.svg" class="upload" />
                         </div>
                          
-                      
-                    <img class="close" src="../assets/img/close.svg" />
                        </div>
-                       <div class="hidden">
+                    <img class="close" src="../assets/img/close.svg" />
+                       <div class="hidden" @click="addclass">
                           <input type="file" ref="file"  
                           @change="uploadFile" 
                           style="height: 100%;width: 100%;"  
@@ -28,8 +25,13 @@
                           @abort="removeclass"
                                  />
                       </div>
-                      
-                    </div>
+                      <div class="clear">
+                        <p  ><img style="height:16px width:20px" src="../assets/img/clear.png" alt="">
+                         Clear Selection</p>
+                    
+                      </div>
+
+                   </div>
                     
                  </div>
 
@@ -39,7 +41,7 @@
         </form>
       </div>
        <!-- alternative card section -->
-      <div class="card1" v-else>
+      <div class="card1 col-12" v-else>
         <div class="logo2">
         <img src="../assets/img/Vector.png"  alt="" />
         <img src="../assets/img/title.png" style="margin-left: 1rem;" alt="" />
@@ -70,10 +72,9 @@
                  </div>
       </div>
       <!-- image collect section -->
-      <div v-if="show" class="collect1">
-        
-        <img src="../assets/img/frame.png" class="download" />
+          <div v-if="show" class="collect1">
         <div class="collect">
+      <img class="download"  src="../assets/img/frame.png"  />
           <ul class="list">
             <a v-for="(image, index) in images" :key="index">
               <div class="warp">
@@ -81,7 +82,6 @@
                   :src="require(`../assets/img/${image.img}`)"
                   class="item2"
                   placeholder=""
-                  style="width: 45px; height: 45px"
                 />
 
                 <img
@@ -93,9 +93,10 @@
             </a>
           </ul>
         </div>
-        
       </div>
-    </div>
+
+        </div>
+        
   </div>
 </template>
 <script setup>
@@ -208,7 +209,7 @@ function uploadFile() {
   height: 100%;
 }
 .newMain {
-  background: url("../assets/img/effect.jpg") no-repeat;
+  background: url("../assets/img/loddingeffect.jpg") no-repeat;
   background-repeat: no-repeat;
   background-repeat: no-repeat;
   background-size: cover;
@@ -235,6 +236,7 @@ function uploadFile() {
 }
 
 .form p {
+  width:313px;
     font-family: 'Hubballi', cursive;
     font-weight: 400;
     line-height: 21px;
@@ -272,28 +274,30 @@ form{
         width:auto;
         position: relative;
         vertical-align: middle;
+        margin: 50px auto;
       
       }
 .uploadFileBox{
     align-content: center;
     justify-content: space-between;
-    height: 58px;
-    padding-left: 20px;
-    padding-right: 20px;
+    height: 85px;
     padding: 10px auto;
     display: flex;
-
-
-   
+}
+.clear{
+  visibility: hidden;
 }
 .inputCard{
   margin: 0 auto;
-  width:400px;
+  height: 58px;
+  width:422px;
   display: block;
   justify-content: center;
   align-items: center;
 }
 .close{
+  left: 100%;
+  position: absolute;
  display: inline;
   margin: auto;
  
@@ -321,14 +325,14 @@ form{
   display: flex;
   margin: 0 auto ;
   height: 100%;
-  width: 450px;
+  width: 422px;
   justify-content: space-between;
     border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.067);
   vertical-align: middle;
   img{
     vertical-align: middle;
-        height:50%;
+        height:70%;
         margin:auto 1rem 1rem;
     }
     
@@ -344,7 +348,6 @@ form{
   
   
 }
-
 .upload {
   padding-top: 5px;
 }
@@ -364,51 +367,71 @@ ul {
   flex-wrap: wrap;
 }
 .list {
+  background-color:#F4F4F4;
   float: center;
-  height: 200px;
-  width: 300px;
-  margin: 0 auto;
-}
-
-.download{
-        margin-bottom: -40px;
-        margin-left: 21rem;
-        align-self: start;
-      display: inline-block;
-        left: 2px;
-    }
-.collect {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  background-color: rgba(0, 0, 0, 0.05);
-  border-radius: 12px;
-  border-width: 2px;
-  margin: 0 2rem;
-  padding: 5px 8px;
+  height: auto;
+  width: 422px;
+  margin: 10px 0px;
 }
 .collect1{
-  padding: 5px 10px;
-  margin: 0 2rem;
-  background-color: #FFFFFF;
+  display: block;
+ width:422px;
+ height: 291px;
 }
+
+.collect {
+  position: absolute;
+  background-color:#F4F4F4;
+  border-radius: 10px;
+  margin:0  auto;
+  padding: 5px 1px;
+ width:422px;
+ height: 291px;
+}
+.download{
+  top:0;
+  position: absolute;
+  left:100%;
+  display: inline-block;
+    }
+
 .warp {
   padding: 2px auto;
 }
 .item1 {
-  position: inherit;
+  position: absolute;
   margin-left: -5px;
   margin-bottom: 36px;
   z-index: 1;
 }
 .item2 {
-  position: initial;
+  position:initial;
+margin-left: 9px;
+margin-bottom:9px;
   z-index: 2;
+  border-radius: 6px;
+  width:60px;
+  height:60px;
 }
 @media screen and (max-width: 900px) {
   .list {
     float: center;
-    height: 200px;
-    width: 300px;
+    width: 313px;
+    height: auto;
     margin:4px 0;
+    padding: 0px 9px;
+  }
+  .collect{
+    position: relative;
+    width:313px;
+    height: 200px;
+    margin:0 auto;
+  }
+  .inputCard{
+    width:313px;
+  }
+  .hidden{
+    width:284px;
   }
   ul {
     display: flex;
@@ -421,6 +444,16 @@ ul {
   .inputText{
     width: 300px;
   }
-  
+  .close{
+    visibility: hidden;
+    position: absolute;
+  }
+  .clear{
+    visibility: visible;
+    color: red;
+    display: flex;
+    position: relative;
+    margin-top: 4rem;
+  }
 }
 </style>
