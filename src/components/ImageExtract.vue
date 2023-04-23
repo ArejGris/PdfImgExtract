@@ -1,6 +1,7 @@
 <template>
   <div id="main">
     <div id="form" class="form" >
+      <!-- main card section -->
       <div class="card1" v-if="!hide">
         <img src="../assets/img/logo.svg" alt="" />
         <p>Extract Your Images From Any PDF</p>
@@ -37,10 +38,11 @@
           </div>
         </form>
       </div>
+       <!-- alternative card section -->
       <div class="card1" v-else>
         <div class="logo2">
-        <img src="../assets/img/Vector.png" alt="" />
-        <img src="../assets/img/title.png" alt="" />
+        <img src="../assets/img/Vector.png"  alt="" />
+        <img src="../assets/img/title.png" style="margin-left: 1rem;" alt="" />
       </div>
       <div class="uploadFileBox" 
                   @click="addclass"
@@ -59,6 +61,7 @@
                           style="height: 100%;width: 100%;"  
                           @input="removeclass"
                           @abort="removeclass"
+                         
                                  />
                       </div>
                       
@@ -66,6 +69,7 @@
                     
                  </div>
       </div>
+      <!-- image collect section -->
       <div v-if="show" class="collect1">
         
         <img src="../assets/img/frame.png" class="download" />
@@ -208,6 +212,10 @@ function uploadFile() {
   background-repeat: no-repeat;
   background-repeat: no-repeat;
   background-size: cover;
+  -webkit-background-size:cover;
+  -webkit-background-repeat:no-repeat;
+        -moz-background-size:cover;
+        -o-background-size:cover;
   image-resolution: 300dpi;
   
 }
@@ -225,8 +233,38 @@ function uploadFile() {
 
   
 }
-.card1{
-display: flex;
+
+.form p {
+    font-family: 'Hubballi', cursive;
+    font-weight: 400;
+    line-height: 21px;
+    font-size: 22px;
+}
+form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  -webkit-align-items:center;
+  margin:  0 auto;
+}
+.confirmBtn {
+  width: 261px;
+  height: 50px;
+  background: linear-gradient(90deg, #4568dc -77.64%, #b06ab3 177.64%);
+  color: #FFFFFF;
+    border-radius: 5px;
+  border-style: none;
+  margin-top: 10px;
+  font-family: "Hubballi";
+  font-weight: 400;
+  line-height: 21px;
+  font-size: 22px;
+  font-style: normal;
+  text-transform: capitalize;
+}
+// main card section
+.card1{display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -236,29 +274,6 @@ display: flex;
         vertical-align: middle;
       
       }
-.form p {
-    font-family: 'Hubballi', cursive;
-    font-weight: 400;
-    line-height: 21px;
-    font-size: 22px;
-}
-.newform {
-  position: absolute;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100vh;
-  align-items: center;
-  justify-content: center;
-  background-image: none;
-  background: url("../assets/img/effect.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  image-resolution: 300dpi;
-  opacity: 0.7;
-}
-
 .uploadFileBox{
     align-content: center;
     justify-content: space-between;
@@ -330,70 +345,19 @@ display: flex;
   
 }
 
-form{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  margin:  0 auto;
-}
-.confirmBtn {
-  width: 261px;
-  height: 50px;
-  background: linear-gradient(90deg, #4568dc -77.64%, #b06ab3 177.64%);
-  color: #FFFFFF;
-    border-radius: 5px;
-  border-style: none;
-  margin-top: 10px;
-  font-family: "Hubballi";
-  font-weight: 400;
-  line-height: 21px;
-  font-size: 22px;
-  font-style: normal;
-  text-transform: capitalize;
-}
-.custom-file-input::-webkit-file-upload-button {
-  visibility: hidden;
-}
 .upload {
   padding-top: 5px;
 }
-.custom-file-input::before {
-  content: "Upload Your PDF here";
-  display: inline-block;
-  font-family: "Hubballi";
-  font-weight: 400;
-  line-height: 21px;
-  font-size: 17px;
-  border-radius: 10px;
-  padding: 5px 8px;
-  outline: none;
-  white-space: nowrap;
-  -webkit-user-select: none;
-  cursor: pointer;
-  font-weight: 20;
-  align-content: center;
-  
-  /* opacity: 0.4; */
-  width: 100%;
-}
+// alternative card section
 
-.custom-input-file {
-  border-radius: 3px;
-  margin-bottom: 2rem;
+
+.logo2{
+  display: flex;
+  vertical-align: middle;
+  margin: 5rem auto;
 }
-.custom-file {
-  width: 100%;
-  height: 3rem;
-  background-color: rgba(0, 0, 0, 0.027);
-  z-index: 1;
-  font-family: cursive;
-  color: black;
-  display: inline-block;
-  border-radius: 3px;
-  padding: 4px 10px;
-  cursor: pointer;
-}
+// collect section
+
 ul {
   display: flex;
   flex-shrink: 5;
@@ -438,15 +402,6 @@ ul {
 .item2 {
   position: initial;
   z-index: 2;
-}
-.card2{
-  background-color: #FFFFFF;
-}
-.logo2{
-  size: 90rem;
-  display: flex;
-  vertical-align: middle;
-  margin: 5rem auto;
 }
 @media screen and (max-width: 900px) {
   .list {
