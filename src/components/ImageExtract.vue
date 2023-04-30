@@ -3,7 +3,7 @@
     <div id="form" class="form " >
       <!-- main card section -->
       <div class="card1" v-if="!hide">
-        <img style="margin-bottom:54px" src="../assets/img/logo.svg" alt="" />
+        <img class="logo" src="../assets/img/logo.svg" alt="" />
         <p >Extract Your Images From Any PDF</p>
         <form @submit.prevent="addItem" action="">
                 <div class="uploadFileBox" >
@@ -16,7 +16,6 @@
                         </div>
                          
                        </div>
-                    <img class="close" src="../assets/img/close.svg" />
                        <div class="hidden" @click="addclass">
                           <input type="file" ref="file"  
                           @change="uploadFile" 
@@ -26,6 +25,7 @@
                                  />
                       </div>
                    </div>
+                    <img class="close" src="../assets/img/close.svg" />
                     
                  </div>
                  <div class="clear" v-if="clear">
@@ -209,6 +209,7 @@ function uploadFile() {
   /* position: relative;     */
   width: 100%;
   height: 100%;
+
 }
 .newMain {
   background: url("../assets/img/loddingeffect.jpg") no-repeat;
@@ -225,7 +226,7 @@ function uploadFile() {
 .form {
   /* position: absolute; */
   top:0;
-  margin: 0 auto;
+  margin:0 auto;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -238,12 +239,10 @@ function uploadFile() {
 }
 
 .form p {
-  width:313px;
-    font-family: 'Hubballi', cursive;
+    font-family: 'Hubballi', 'cursive';
     font-weight: 400;
     line-height: 21px;
     font-size: 22px;
-    margin: 0;
 }
 form{
   display: flex;
@@ -251,7 +250,7 @@ form{
   justify-content: center;
   text-align: center;
   -webkit-align-items:center;
-  margin:  30px 0 auto;
+  width: 442px;
 }
 .confirmBtn {
   width: 261px;
@@ -260,7 +259,7 @@ form{
   color: #FFFFFF;
     border-radius: 5px;
   border-style: none;
-  margin: 40px 10px auto;
+  margin: 30px 0px auto;
   font-family: "Hubballi";
   font-weight: 400;
   line-height: 21px;
@@ -269,16 +268,23 @@ form{
   text-transform: capitalize;
 }
 // main card section
-.card1{display: flex;
+.card1{
+  display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         text-align:center;
         width:auto;
+        height: auto;
         position: relative;
         vertical-align: middle;
-        margin: 30px auto;
+        margin: 10px auto;
       
+      }
+      .card1{
+        .logo{
+          margin-top: 50px;
+        }
       }
 .uploadFileBox{
     align-content: center;
@@ -286,14 +292,16 @@ form{
     height: 58px;
     padding: 10px auto;
     display: flex;
+    width:442px;
 }
 .clear{
+  position: absolute;
   visibility: hidden;
 }
 .inputCard{
   margin: 0 auto;
   height: 58px;
-  width:422px;
+width:442px;
   display: block;
   justify-content: center;
   align-items: center;
@@ -328,12 +336,12 @@ form{
   display: flex;
   margin: 0 auto ;
   height: 100%;
-  width: 422px;
+  width: 442px;
   justify-content: space-between;
     border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.067);
   vertical-align: middle;
-  img{
+  .upload{
     vertical-align: middle;
         height:70%;
         margin:auto 1rem 1rem;
@@ -342,7 +350,7 @@ form{
     span{
       vertical-align: middle;
       height: 50%;
-      font-family:  'Hubballi', cursive;
+      font-family:  'Hubballi', 'cursive';
       font-size: 20px;
       margin:1rem 1rem 6rem;
     
@@ -360,7 +368,8 @@ form{
 .logo2{
   display: flex;
   vertical-align: middle;
-  margin: 5rem auto;
+  padding-bottom:110px;
+  top:0;
 }
 // collect section
 
@@ -373,29 +382,27 @@ ul {
   background-color:#F4F4F4;
   float: center;
   height: auto;
+  padding: 10px;
   width: 422px;
-  margin: 10px 0px;
 }
+
 .collect1{
   display: block;
- width:422px;
+ width:442px;
  height: 291px;
+ margin: 10px 0px;
 }
 
 .collect {
-  position: absolute;
-  background-color:#F4F4F4;
-  border-radius: 10px;
-  margin:0  auto;
-  padding: 5px 1px;
- width:422px;
- height: 291px;
+  position: relative;
+    border-radius: 10px;
+    margin: 0 auto;
+
 }
 .download{
-  top:0;
-  position: absolute;
-  left:100%;
-  display: inline-block;
+    position: absolute;
+    left: 100%;
+    display: inline
     }
 
 .warp {
@@ -416,36 +423,122 @@ margin-bottom:9px;
   width:60px;
   height:60px;
 }
-@media screen and (max-width: 900px) {
-  .list {
-    float: center;
-    width: 313px;
-    height: auto;
-    margin:4px 0;
-    padding: 0px 9px;
-  }
-  .collect{
-    position: relative;
-    width:313px;
-    height: 200px;
-    margin:0 auto;
-  }
-  .inputCard{
-    width:313px;
+.form{
+  overflow:scroll;
+  overflow-x:hidden
+}
+.form::-webkit-scrollbar{
+  width: 0;
+}
+@media screen and (max-width:390px){
+
+.confirmBtn{
+  margin-top: 20px;
+}
+.card1{
+  width: 260px;
+}
+form{
+  display: grid;
+  width: 100%;
+}
+.inputCard{
+    width:260px;
   }
   .hidden{
-    width:284px;
+    width:260px;
   }
+.uploadFileBox{
+  width: 100%;
+}
+  .inputText{
+    span{
+      font-size: 20px;
+    }
+  }
+
+  .item2{
+  width:50px;
+  height:50px;
+ }
+
+ .collect1{
+  width: 260px;
+ }
+ 
+.collect{
+  width:250px;
+  background-color: #f4f4f4;
+  padding-right: 9px;
+}
+
+  .list {
+    float: center;
+    height: auto;
+    margin:4px 0px;
+    margin-left: -10px;
+    padding: 10px;
+    width: 240px;
+  }
+.download{
+  left: 97%;
+}
+ 
   ul {
     display: flex;
     flex-shrink: 4;
     flex-wrap: wrap;
   }
-  .inputCard{
-    width: 300px;
+
+  .close{
+    visibility: hidden;
+    position: absolute;
+  }
+  .clear{
+    visibility: visible;
+    color: red;
+    justify-self: flex-end;
+    position: relative;
+    text-align:right;
+  }
+.visible{
+  span{
+    font-size: 15px;
+  }
+}
+.form p{
+  font-size: 15px;
+}
+}
+@media screen and (max-width: 800px) and (min-width: 391px){
+
+.confirmBtn{
+  margin-top: 20px;
+}
+.card1{
+  width: 313px;
+}
+form{
+  display: grid;
+  width: 100%;
+}
+.uploadFileBox{
+  width: 100%;
+}
+.inputCard{
+    width:313px;
+  }
+  
+  .inputText{
+    width: 313px;
+  }
+  .hidden{
+    width:313px;
   }
   .inputText{
-    width: 300px;
+    span{
+      font-size: 20px;
+    }
   }
   .close{
     visibility: hidden;
@@ -454,10 +547,32 @@ margin-bottom:9px;
   .clear{
     visibility: visible;
     color: red;
-    display: flex;
+    justify-self: flex-end;
     position: relative;
-    margin-top:16px;
     text-align:right;
   }
+  // collect section
+  .list {
+    float: center;
+    width: 295px;
+    height: auto;
+    margin:4px 0;
+    padding: 9px;
+  }
+  .collect{
+    display: grid;
+    width: 313px;
+  }
+  .download{
+    left:98%;
+    margin-top: 4px;
+    justify-self: flex-end ;
+  }
+  ul {
+    display: flex;
+    flex-shrink: 4;
+    flex-wrap: wrap;
+  }
+
 }
 </style>
