@@ -481,7 +481,7 @@ form{
     width: 240px;
   }
 .download{
-  left: 97%;
+  left: 90%;
 }
  
   ul {
