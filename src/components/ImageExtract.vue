@@ -451,12 +451,7 @@ form{
 .inputCard{
     width:260px;
   }
-  .hidden{
-    width:260px;
-  }
-  .visible{
-    width: 260px;
-  }
+
 .uploadFileBox{
   width: 100%;
 }
@@ -530,13 +525,6 @@ form{
     width:313px;
   }
   
-  .inputText{
-    width: 313px;
-  }
-  .hidden{
-    width:313px;
-  }
-
   .close{
     visibility: hidden;
     position: absolute;
