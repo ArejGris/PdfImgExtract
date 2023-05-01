@@ -388,7 +388,7 @@ ul {
 }
 
 .collect1{
-  display: block;
+  display: flex;
  width:442px;
  height: 291px;
  margin: 10px 0px;
@@ -479,12 +479,12 @@ form{
     float: center;
     height: auto;
     margin:4px 0px;
-    margin-left: -10px;
+    margin-left: -13px;
     padding: 10px;
     width: 240px;
   }
 .download{
-  left: 90%;
+  left: 92%;
 }
  
   ul {
