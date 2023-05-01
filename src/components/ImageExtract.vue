@@ -426,14 +426,13 @@ margin-bottom:9px;
 .form{
   overflow:scroll;
   overflow-x:hidden;
-  scrollbar-width: 0;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none; 
 }
 .form::-webkit-scrollbar{
-  width: 0;
+ display: none;
 }
-.form::-moz-progress-bar{
-  width:0;
-}
+
 @media screen and (max-width:390px){
 
 .confirmBtn{
