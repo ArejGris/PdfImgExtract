@@ -255,11 +255,11 @@ form{
 .confirmBtn {
   width: 261px;
   height: 50px;
+  margin-top: 30px;
   background: linear-gradient(90deg, #4568dc -77.64%, #b06ab3 177.64%);
   color: #FFFFFF;
     border-radius: 5px;
   border-style: none;
-  margin: 30px 0px auto;
   font-family: "Hubballi";
   font-weight: 400;
   line-height: 21px;
@@ -269,7 +269,7 @@ form{
 }
 // main card section
 .card1{
-  display: flex;
+        display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -336,7 +336,7 @@ width:442px;
   display: flex;
   margin: 0 auto ;
   height: 100%;
-  width: 442px;
+  width: 100%;
   justify-content: space-between;
     border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.067);
@@ -425,18 +425,24 @@ margin-bottom:9px;
 }
 .form{
   overflow:scroll;
-  overflow-x:hidden
+  overflow-x:hidden;
+  scrollbar-width: 0;
 }
 .form::-webkit-scrollbar{
   width: 0;
+}
+.form::-moz-progress-bar{
+  width:0;
 }
 @media screen and (max-width:390px){
 
 .confirmBtn{
   margin-top: 20px;
+  font-size: 17px;
 }
-.card1{
-  width: 260px;
+
+.form p{
+  font-size: 18px;
 }
 form{
   display: grid;
@@ -448,12 +454,15 @@ form{
   .hidden{
     width:260px;
   }
+  .visible{
+    width: 260px;
+  }
 .uploadFileBox{
   width: 100%;
 }
   .inputText{
     span{
-      font-size: 20px;
+      font-size: 17px;
     }
   }
 
@@ -476,7 +485,7 @@ form{
     float: center;
     height: auto;
     margin:4px 0px;
-    margin-left: -15px;
+    margin-left: -10px;
     padding: 10px;
     width: 240px;
   }
@@ -501,27 +510,19 @@ form{
     position: relative;
     text-align:right;
   }
-.visible{
-  span{
-    font-size: 15px;
-  }
-}
-.form p{
-  font-size: 15px;
-}
+
+
 }
 @media screen and (max-width: 800px) and (min-width: 391px){
 
 .confirmBtn{
   margin-top: 20px;
 }
-.card1{
-  width: 313px;
-}
 form{
   display: grid;
   width: 100%;
 }
+
 .uploadFileBox{
   width: 100%;
 }
@@ -535,11 +536,7 @@ form{
   .hidden{
     width:313px;
   }
-  .inputText{
-    span{
-      font-size: 20px;
-    }
-  }
+
   .close{
     visibility: hidden;
     position: absolute;
