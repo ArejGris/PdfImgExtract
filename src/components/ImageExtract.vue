@@ -384,6 +384,7 @@ ul {
   height: auto;
   padding: 10px;
   width: 422px;
+  border-radius: 10px;
 }
 
 .collect1{
@@ -426,13 +427,11 @@ margin-bottom:9px;
 .form{
   overflow:scroll;
   overflow-x:hidden;
-  scrollbar-width: 0;
+-ms-overflow-style: none;
+  scrollbar-width: none;
 }
 .form::-webkit-scrollbar{
-  width: 0;
-}
-.form::-moz-progress-bar{
-  width:0;
+  display: none;
 }
 @media screen and (max-width:390px){
 
