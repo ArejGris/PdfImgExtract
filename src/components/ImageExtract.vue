@@ -384,6 +384,7 @@ ul {
   height: auto;
   padding: 10px;
   width: 422px;
+  border-radius: 10px;
 }
 
 .collect1{
@@ -433,7 +434,7 @@ margin-bottom:9px;
  display: none;
 }
 
-@media screen and (max-width:390px){
+@media screen and (max-width:500px){
 
 .confirmBtn{
   margin-top: 20px;
@@ -466,25 +467,26 @@ form{
  }
 
  .collect1{
+  display:flex;
   width: 260px;
  }
  
 .collect{
   width:250px;
-  background-color: #f4f4f4;
-  padding-right: 9px;
 }
 
   .list {
     float: center;
     height: auto;
     margin:4px 0px;
-    margin-left: -10px;
+    margin-left: -14px;
     padding: 10px;
+    padding-right:19px;
     width: 240px;
   }
 .download{
-  left: 90%;
+  left: 93%;
+  top:-10px;
 }
  
   ul {
@@ -507,7 +509,7 @@ form{
 
 
 }
-@media screen and (max-width: 800px) and (min-width: 391px){
+@media screen and (max-width: 900px) and (min-width: 501px){
 
 .confirmBtn{
   margin-top: 20px;

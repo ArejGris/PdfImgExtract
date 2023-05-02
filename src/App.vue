@@ -40,7 +40,7 @@ export default {
   background-size: cover;
   background-position: center;
 }
-@media screen and (max-width: 800px ) and (min-width: 431px){
+@media screen and (max-width: 760px ) and (min-width: 401px){
   #app{
   background-image: url("./assets/img/midmobilebg.png");
   background-attachment: fixed;
@@ -49,7 +49,7 @@ export default {
   background-size: cover;
   }
 }
-@media screen and (max-width:430px ) {
+@media screen and (max-width:400px ) {
   #app{
   background: url("./assets/img/mobilebg.svg") no-repeat center center /cover;
   background-attachment: fixed;
