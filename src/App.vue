@@ -116,7 +116,7 @@ export default {
 @media screen and (max-width:550px ) and (max-height:520px)
 {
   #app{
-  background: url("./assets/img/900-700.svg") no-repeat center center /cover;
+  background: url("./assets/img/600-600.svg") no-repeat center center /cover;
   background-attachment: fixed;
   position: fixed;
 
