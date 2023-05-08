@@ -61,12 +61,7 @@ export default {
 }
   
 }
-@media screen and (max-width:950px) and (min-width:771px) and (max-height:700px){
-#app{
-  background: url('../src/assets/img/800-500.svg') no-repeat center center /cover;
-}
-  
-}
+
 @media screen and (max-width:770px ) and (min-width: 551px) 
 {
   #app{
@@ -77,25 +72,18 @@ export default {
   background-size: cover;
   }
 }
-@media screen and (max-width:770px ) and (min-width: 551px) and (max-height:750px)
+@media screen and (max-width:770px ) and (min-width: 551px) and (max-height:700px)
 {
   #app{
-  background-image: url("./assets/img/800-900.svg");
+  background-image: url("./assets/img/900-700.svg");
   background-attachment: fixed;
   position: fixed;
   background-position: center;
   background-size: cover;
   }
 }
-@media screen and (max-width: 770px) and (min-width: 551px) and (max-height:600px)
-{
-  #app{
-    background: url("./assets/img/900-700.svg")no-repeat center center /cover;
-    background-attachment: fixed;
-    position: fixed;
-  }
-}
-@media screen and (max-width:550px ) {
+
+@media screen and (max-width:550px){
   #app{
   background: url("./assets/img/mobilebg.svg") no-repeat center center /cover;
   background-attachment: fixed;
@@ -104,16 +92,7 @@ export default {
   }
 }
 
-@media screen and (max-width:550px ) and (max-height:820px)
-{
-  #app{
-  background: url("./assets/img/600-900.svg") no-repeat center center /cover;
-  background-attachment: fixed;
-  position: fixed;
-
-  }
-}
-@media screen and (max-width:550px ) and (max-height:520px)
+@media screen and (max-width:550px ) and (max-height:800px)
 {
   #app{
   background: url("./assets/img/700-900.svg") no-repeat center center /cover;

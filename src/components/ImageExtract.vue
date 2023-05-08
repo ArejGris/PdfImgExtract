@@ -279,6 +279,7 @@ form{
         position: relative;
         vertical-align: middle;
         margin: 10px auto;
+        margin-bottom:60px;
       
       }
       .card1{
